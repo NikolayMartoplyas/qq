@@ -7,22 +7,20 @@ import com.codeborne.selenide.Configuration;
 import static com.codeborne.selenide.Condition.exactText;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
-
+import org.junit.BeforeClass;
 
 public class cardTest {
+    @BeforeEach
+    public void setUp() {
+        Configuration.browser = "chrome";
+        Configuration.headless = true;  // Включаем headless режим
+        }
 
-//        @BeforeEach
-//        public void setup() {
-//            Configuration.browser = "chrome";
-//            Configuration.headless = true; // Включаем headless режим
-//        }
-//
 
 
     @Test
     void debitCardApplication() throws InterruptedException {
-        Configuration.browser = "chrome";
-        Configuration.headless = true; // Включаем headless режим
+
         open("http://localhost:9999");
         $(".heading").shouldHave(exactText("Заявка на дебетовую карту")); //проверяет написание текста
         $(".heading_size_s").shouldHave(exactText("Персональные данные"));
